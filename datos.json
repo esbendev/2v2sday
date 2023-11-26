@@ -14,7 +14,7 @@
         "team2_stream2": "https://www.youtube.com/embed/DfiiIH6hth4?si=dq1UYX2hRFJHDChB&amp;controls=0",
         "team3_stream1": "https://www.youtube.com/embed/DfiiIH6hth4?si=dq1UYX2hRFJHDChB&amp;controls=0",
         "team3_stream2": "https://www.youtube.com/embed/DfiiIH6hth4?si=dq1UYX2hRFJHDChB&amp;controls=0",
-        "team4_stream1": "https://player.twitch.tv/?channel=squeex&parent=http://localhost:8000/",
+        "team4_stream1": "https://player.twitch.tv/?channel=squeex&parent=esbendev.com",
         "team4_stream2": "https://www.youtube.com/embed/DfiiIH6hth4?si=dq1UYX2hRFJHDChB&amp;controls=0"
     }
 ]
