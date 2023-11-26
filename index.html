@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2v2sday</title>
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .container-principal {
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-rows: 10% 10% 80%;
+            grid-template-columns: 100%;
+        }
+
+        .score-team {
+            width: 100%;
+            height: 100%;
+            background-color: #000000;
+            color: white;
+            border: none;
+            outline: none;
+        }
+
+        .scores {
+            width: 100%;
+            display: flex;
+        }
+
+        button.score-team {
+            width: 25%;
+            height: 100%;
+            background-color: white;
+            color: black;
+            border: none;
+            outline: none;
+        }
+
+        .streams-team.ocultar {
+            display: none;
+        }
+
+        .streams-team {
+            width: 100%;
+            height: 100%;
+            display: flex;
+        }
+
+        .streams-viewer {
+            width: 100%;
+            height: 100%;
+            display: flex;
+        }
+
+        .streams-team {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+
+        .stream-container {
+            width: 100%;
+        }
+
+        .stream-container > iframe {
+            height: 90%;
+        }
+    </style>
+</head>
+
+<body onload="cargarDatos()">
+    <div class="container-principal">
+        <h1>2v2sday</h1>
+        <div class="scores" id="scores">
+            <button class="score-team" onclick="switchTo(1)" id="score-team1">
+                <div class="team1-player1">
+                    <p id="team1-player1-name"></p>
+                </div>
+                <div class="team1-player2">
+                    <p id="team1-player2-name"></p>
+                </div>
+            </button>
+            <button class="score-team" onclick="switchTo(2)" id="score-team2">
+                <div class="team2-player1">
+                    <p id="team2-player1-name"></p>
+                </div>
+                <div class="team2-player2">
+                    <p id="team2-player2-name"></p>
+                </div>
+            </button>
+            <button class="score-team" onclick="switchTo(3)" id="score-team3">
+                <div class="team3-player1">
+                    <p id="team3-player1-name"></p>
+                </div>
+                <div class="team3-player2">
+                    <p id="team3-player2-name"></p>
+                </div>
+            </button>
+            <button class="score-team" onclick="switchTo(4)" id="score-team4">
+                <div class="team4-player1">
+                    <p id="team4-player1-name"></p>
+                </div>
+                <div class="team4-player2">
+                    <p id="team4-player2-name"></p>
+                </div>
+            </button>
+        </div>
+        <div class="streams-viewer" id="streams-viewer">
+            <div class="streams-team ocultar" id="streams-team1">
+                <div class="stream-container" id="stream-container-team1-stream1"></div>
+                <div class="stream-container" id="stream-container-team1-stream2"></div>
+            </div>
+            <div class="streams-team ocultar" id="streams-team2">
+                <div class="stream-container" id="stream-container-team2-stream1"></div>
+                <div class="stream-container" id="stream-container-team2-stream2"></div>
+            </div>
+            <div class="streams-team ocultar" id="streams-team3">
+                <div class="stream-container" id="stream-container-team3-stream1"></div>
+                <div class="stream-container" id="stream-container-team3-stream2"></div>
+            </div>
+            <div class="streams-team ocultar" id="streams-team4">
+                <div class="stream-container" id="stream-container-team4-stream1"></div>
+                <div class="stream-container" id="stream-container-team4-stream2"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var team1_stream1 = "";
+        var team1_stream2 = "";
+        var team2_stream1 = "";
+        var team2_stream2 = "";
+        var team3_stream1 = "";
+        var team3_stream2 = "";
+        var team4_stream1 = "";
+        var team4_stream2 = "";
+    
+        function cargarDatos() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+
+                    var datos = JSON.parse(this.responseText);
+                    console.log(datos);
+                    document.getElementById("team1-player1-name").innerHTML = datos[0].team1_player1;
+                    document.getElementById("team1-player2-name").innerHTML = datos[0].team1_player2;
+                    document.getElementById("team2-player1-name").innerHTML = datos[0].team2_player1;
+                    document.getElementById("team2-player2-name").innerHTML = datos[0].team2_player2;
+                    document.getElementById("team3-player1-name").innerHTML = datos[0].team3_player1;
+                    document.getElementById("team3-player2-name").innerHTML = datos[0].team3_player2;
+                    document.getElementById("team4-player1-name").innerHTML = datos[0].team4_player1;
+                    document.getElementById("team4-player2-name").innerHTML = datos[0].team4_player2;
+                    team1_stream1 = datos[0].team1_stream1;
+                    team1_stream2 = datos[0].team1_stream2;
+                    team2_stream1 = datos[0].team2_stream1;
+                    team2_stream2 = datos[0].team2_stream2;
+                    team3_stream1 = datos[0].team3_stream1;
+                    team3_stream2 = datos[0].team3_stream2;
+                    team4_stream1 = datos[0].team4_stream1;
+                    team4_stream2 = datos[0].team4_stream2;
+
+                    // document.getElementById("stream-container-team1-stream1").innerHTML = datos[0].team1_stream1;
+                    // document.getElementById("stream-container-team1-stream2").innerHTML = datos[0].team1_stream2;
+                    // document.getElementById("stream-container-team2-stream1").innerHTML = datos[0].team2_stream1;
+                    // document.getElementById("stream-container-team2-stream2").innerHTML = datos[0].team2_stream2;
+                    // document.getElementById("stream-container-team3-stream1").innerHTML = datos[0].team3_stream1;
+                    // document.getElementById("stream-container-team3-stream2").innerHTML = datos[0].team3_stream2;
+                    // document.getElementById("stream-container-team4-stream1").innerHTML = datos[0].team4_stream1;
+                    // document.getElementById("stream-container-team4-stream2").innerHTML = datos[0].team4_stream2;
+                }
+            };
+            xhttp.open("GET", "datos.json", true);
+            xhttp.send();
+        }
+
+        function cargarStream(streamNumber,teamNumber,urlStream) {
+            idStream = "stream-container-team"+teamNumber+"-stream"+streamNumber;
+            console.log(idStream);
+            var container = document.getElementById(idStream);
+            // create an iframe inside container
+            var stream = document.createElement("iframe");
+            stream.setAttribute("src", urlStream);
+            stream.setAttribute("width", "100%");
+            stream.setAttribute("height", "100%");
+            stream.setAttribute("frameborder", "0");
+            stream.setAttribute("scrolling", "no");
+            stream.setAttribute("allowfullscreen", "true");
+            stream.setAttribute("allow", "autoplay");
+            container.append(stream);
+        }
+
+        function switchTo(teamNumber) {
+            var streams = document.getElementsByClassName("streams-team");
+            for (var i = 0; i < streams.length; i++) {
+                streams[i].classList.add("ocultar");
+            }
+            var streamContainers = document.getElementsByClassName("stream-container");
+            for (var i = 0; i < streamContainers.length; i++) {
+                streamContainers[i].innerHTML = "";
+            }
+            document.getElementById("streams-team" + teamNumber).classList.remove("ocultar");
+            
+            if (teamNumber == 1) {
+                cargarStream(1,teamNumber,team1_stream1);
+                cargarStream(2,teamNumber,team1_stream2);
+            } else if (teamNumber == 2) {
+                cargarStream(1,teamNumber,team2_stream1);
+                cargarStream(2,teamNumber,team2_stream2);
+            } else if (teamNumber == 3) {
+                cargarStream(1,teamNumber,team3_stream1);
+                cargarStream(2,teamNumber,team3_stream2);
+            } else if (teamNumber == 4) {
+                cargarStream(1,teamNumber,team4_stream1);
+                cargarStream(2,teamNumber,team4_stream2);
+            }
+        }
+
+    </script>
+</body>
+
+</html>
