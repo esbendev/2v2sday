@@ -8,12 +8,12 @@
         "team3_player2": "Tina",
         "team4_player1": "Squeex",
         "team4_player2": "Leslie",
-        "team1_stream1": "https://www.youtube.com/embed/DfiiIH6hth4?si=dq1UYX2hRFJHDChB&amp;controls=0",
-        "team1_stream2": "https://www.youtube.com/embed/DfiiIH6hth4?si=dq1UYX2hRFJHDChB&amp;controls=0",
-        "team2_stream1": "https://www.youtube.com/embed/DfiiIH6hth4?si=dq1UYX2hRFJHDChB&amp;controls=0",
-        "team2_stream2": "https://www.youtube.com/embed/DfiiIH6hth4?si=dq1UYX2hRFJHDChB&amp;controls=0",
-        "team3_stream1": "https://www.youtube.com/embed/DfiiIH6hth4?si=dq1UYX2hRFJHDChB&amp;controls=0",
-        "team3_stream2": "https://www.youtube.com/embed/DfiiIH6hth4?si=dq1UYX2hRFJHDChB&amp;controls=0",
+        "team1_stream1": "https://player.twitch.tv/?channel=squeex&parent=esbendev.com",
+        "team1_stream2": "https://www.youtube.com/embed/PGXrZdWTF58?si=FwgNV70u0aNdCyom&amp;controls=0",
+        "team2_stream1": "https://player.twitch.tv/?channel=etoiles&parent=esbendev.com",
+        "team2_stream2": "https://player.twitch.tv/?channel=foolish&parent=esbendev.com",
+        "team3_stream1": "https://www.youtube.com/embed/rS2MM9BiPhw?si=i3aY4Juh-Z7Z7dEB&amp;controls=0",
+        "team3_stream2": "https://player.twitch.tv/?channel=tinakitten&parent=esbendev.com",
         "team4_stream1": "https://player.twitch.tv/?channel=squeex&parent=esbendev.com",
         "team4_stream2": "https://www.youtube.com/embed/DfiiIH6hth4?si=dq1UYX2hRFJHDChB&amp;controls=0"
     }
