@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2v2sday</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:opsz,wght@8..144,400;8..144,700&display=swap"
+        rel="stylesheet">
     <style>
         *,
         *::before,
@@ -17,44 +21,77 @@
         body {
             width: 100vw;
             height: 100vh;
+            font-family: 'Roboto Serif', serif;
         }
 
         .container-principal {
             width: 100%;
-            height: 100%;
+            height: 95%;
             display: grid;
             grid-template-rows: 10% 10% 80%;
             grid-template-columns: 100%;
+            align-items: center;
         }
 
-        .score-team {
+        h1 {
+            width: 100%;
+            height: 100%;
+            background-color: #000000;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .puntaje-equipo {
             width: 100%;
             height: 100%;
             background-color: #000000;
             color: white;
             border: none;
             outline: none;
+            align-items: center;
         }
 
-        .scores {
+        .puntaje-jugadores>p {
+            font-size: 1.5rem;
+        }
+
+        .puntaje-equipo.seleccionado {
+            background-color: #cc9aff;
+            color: black;
+        }
+
+        .puntajes {
             width: 100%;
+            height: 100%;
             display: flex;
         }
 
-        button.score-team {
+        div.puntaje-equipo {
             width: 25%;
             height: 100%;
             background-color: white;
             color: black;
             border: none;
             outline: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: center
         }
 
-        .streams-team.ocultar {
+        .nombres-jugadores {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .streams-equipo.ocultar {
             display: none;
         }
 
-        .streams-team {
+        .streams-equipo {
             width: 100%;
             height: 100%;
             display: flex;
@@ -66,7 +103,7 @@
             display: flex;
         }
 
-        .streams-team {
+        .streams-equipo {
             display: flex;
             width: 100%;
             height: 100%;
@@ -76,78 +113,121 @@
             width: 100%;
         }
 
-        .stream-container > iframe {
+        .stream-container>iframe {
             height: 90%;
+        }
+
+        footer {
+            width: 100%;
+            height: 5%;
+            background-color: #000000;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        footer>p {
+            color: white;
+        }
+
+        footer>p>a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
         }
     </style>
 </head>
 
-<body onload="cargarDatos()">
+<body onload="inicializarPagina()">
     <div class="container-principal">
         <h1>2v2sday</h1>
-        <div class="scores" id="scores">
-            <button class="score-team" onclick="switchTo(1)" id="score-team1">
-                <div class="team1-player1">
-                    <p id="team1-player1-name"></p>
+        <div class="puntajes" id="puntajes">
+            <div class="puntaje-equipo" onclick="switchTo(1)" id="puntaje-equipo1">
+                <div class="puntaje-jugadores">
+                    <p id="p_puntaje-equipo1">00</p>
                 </div>
-                <div class="team1-player2">
-                    <p id="team1-player2-name"></p>
+                <div class="nombres-jugadores">
+                    <div class="equipo1-jugador1">
+                        <p id="equipo1-jugador1-nombre"></p>
+                    </div>
+                    <div class="equipo1-jugador2">
+                        <p id="equipo1-jugador2-nombre"></p>
+                    </div>
                 </div>
-            </button>
-            <button class="score-team" onclick="switchTo(2)" id="score-team2">
-                <div class="team2-player1">
-                    <p id="team2-player1-name"></p>
+            </div>
+            <div class="puntaje-equipo" onclick="switchTo(2)" id="puntaje-equipo2">
+                <div class="puntaje-jugadores">
+                    <p id="p_puntaje-equipo2">00</p>
                 </div>
-                <div class="team2-player2">
-                    <p id="team2-player2-name"></p>
+                <div class="nombres-jugadores">
+                    <div class="equipo2-jugador1">
+                        <p id="equipo2-jugador1-nombre"></p>
+                    </div>
+                    <div class="equipo2-jugador2">
+                        <p id="equipo2-jugador2-nombre"></p>
+                    </div>
                 </div>
-            </button>
-            <button class="score-team" onclick="switchTo(3)" id="score-team3">
-                <div class="team3-player1">
-                    <p id="team3-player1-name"></p>
+            </div>
+            <div class="puntaje-equipo" onclick="switchTo(3)" id="puntaje-equipo3">
+                <div class="puntaje-jugadores">
+                    <p id="p_puntaje-equipo3">00</p>
                 </div>
-                <div class="team3-player2">
-                    <p id="team3-player2-name"></p>
+                <div class="nombres-jugadores">
+                    <div class="equipo3-jugador1">
+                        <p id="equipo3-jugador1-nombre"></p>
+                    </div>
+                    <div class="equipo3-jugador2">
+                        <p id="equipo3-jugador2-nombre"></p>
+                    </div>
                 </div>
-            </button>
-            <button class="score-team" onclick="switchTo(4)" id="score-team4">
-                <div class="team4-player1">
-                    <p id="team4-player1-name"></p>
+            </div>
+            <div class="puntaje-equipo" onclick="switchTo(4)" id="puntaje-equipo4">
+                <div class="puntaje-jugadores">
+                    <p id="p_puntaje-equipo4">00</p>
                 </div>
-                <div class="team4-player2">
-                    <p id="team4-player2-name"></p>
+                <div class="nombres-jugadores">
+                    <div class="equipo4-jugador1">
+                        <p id="equipo4-jugador1-nombre"></p>
+                    </div>
+                    <div class="equipo4-jugador2">
+                        <p id="equipo4-jugador2-nombre"></p>
+                    </div>
                 </div>
-            </button>
+            </div>
         </div>
         <div class="streams-viewer" id="streams-viewer">
-            <div class="streams-team ocultar" id="streams-team1">
-                <div class="stream-container" id="stream-container-team1-stream1"></div>
-                <div class="stream-container" id="stream-container-team1-stream2"></div>
+            <div class="streams-equipo ocultar" id="streams-equipo1">
+                <div class="stream-container" id="stream-container-equipo1-stream1"></div>
+                <div class="stream-container" id="stream-container-equipo1-stream2"></div>
             </div>
-            <div class="streams-team ocultar" id="streams-team2">
-                <div class="stream-container" id="stream-container-team2-stream1"></div>
-                <div class="stream-container" id="stream-container-team2-stream2"></div>
+            <div class="streams-equipo ocultar" id="streams-equipo2">
+                <div class="stream-container" id="stream-container-equipo2-stream1"></div>
+                <div class="stream-container" id="stream-container-equipo2-stream2"></div>
             </div>
-            <div class="streams-team ocultar" id="streams-team3">
-                <div class="stream-container" id="stream-container-team3-stream1"></div>
-                <div class="stream-container" id="stream-container-team3-stream2"></div>
+            <div class="streams-equipo ocultar" id="streams-equipo3">
+                <div class="stream-container" id="stream-container-equipo3-stream1"></div>
+                <div class="stream-container" id="stream-container-equipo3-stream2"></div>
             </div>
-            <div class="streams-team ocultar" id="streams-team4">
-                <div class="stream-container" id="stream-container-team4-stream1"></div>
-                <div class="stream-container" id="stream-container-team4-stream2"></div>
+            <div class="streams-equipo ocultar" id="streams-equipo4">
+                <div class="stream-container" id="stream-container-equipo4-stream1"></div>
+                <div class="stream-container" id="stream-container-equipo4-stream2"></div>
             </div>
         </div>
     </div>
+    <footer>
+        <p>Made with ☕ by <a href="https://esbendev.com">@esbendev</a></p>
+    </footer>
     <script>
-        var team1_stream1 = "";
-        var team1_stream2 = "";
-        var team2_stream1 = "";
-        var team2_stream2 = "";
-        var team3_stream1 = "";
-        var team3_stream2 = "";
-        var team4_stream1 = "";
-        var team4_stream2 = "";
-    
+        var equipo1_stream1 = "";
+        var equipo1_stream2 = "";
+        var equipo2_stream1 = "";
+        var equipo2_stream2 = "";
+        var equipo3_stream1 = "";
+        var equipo3_stream2 = "";
+        var equipo4_stream1 = "";
+        var equipo4_stream2 = "";
+
         function cargarDatos() {
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function () {
@@ -155,30 +235,30 @@
 
                     var datos = JSON.parse(this.responseText);
                     console.log(datos);
-                    document.getElementById("team1-player1-name").innerHTML = datos[0].team1_player1;
-                    document.getElementById("team1-player2-name").innerHTML = datos[0].team1_player2;
-                    document.getElementById("team2-player1-name").innerHTML = datos[0].team2_player1;
-                    document.getElementById("team2-player2-name").innerHTML = datos[0].team2_player2;
-                    document.getElementById("team3-player1-name").innerHTML = datos[0].team3_player1;
-                    document.getElementById("team3-player2-name").innerHTML = datos[0].team3_player2;
-                    document.getElementById("team4-player1-name").innerHTML = datos[0].team4_player1;
-                    document.getElementById("team4-player2-name").innerHTML = datos[0].team4_player2;
-                    team1_stream1 = datos[0].team1_stream1;
-                    team1_stream2 = datos[0].team1_stream2;
-                    team2_stream1 = datos[0].team2_stream1;
-                    team2_stream2 = datos[0].team2_stream2;
-                    team3_stream1 = datos[0].team3_stream1;
-                    team3_stream2 = datos[0].team3_stream2;
-                    team4_stream1 = datos[0].team4_stream1;
-                    team4_stream2 = datos[0].team4_stream2;
+                    document.getElementById("equipo1-jugador1-nombre").innerHTML = datos[0].equipo1_jugador1;
+                    document.getElementById("equipo1-jugador2-nombre").innerHTML = datos[0].equipo1_jugador2;
+                    document.getElementById("equipo2-jugador1-nombre").innerHTML = datos[0].equipo2_jugador1;
+                    document.getElementById("equipo2-jugador2-nombre").innerHTML = datos[0].equipo2_jugador2;
+                    document.getElementById("equipo3-jugador1-nombre").innerHTML = datos[0].equipo3_jugador1;
+                    document.getElementById("equipo3-jugador2-nombre").innerHTML = datos[0].equipo3_jugador2;
+                    document.getElementById("equipo4-jugador1-nombre").innerHTML = datos[0].equipo4_jugador1;
+                    document.getElementById("equipo4-jugador2-nombre").innerHTML = datos[0].equipo4_jugador2;
+                    equipo1_stream1 = datos[0].equipo1_stream1;
+                    equipo1_stream2 = datos[0].equipo1_stream2;
+                    equipo2_stream1 = datos[0].equipo2_stream1;
+                    equipo2_stream2 = datos[0].equipo2_stream2;
+                    equipo3_stream1 = datos[0].equipo3_stream1;
+                    equipo3_stream2 = datos[0].equipo3_stream2;
+                    equipo4_stream1 = datos[0].equipo4_stream1;
+                    equipo4_stream2 = datos[0].equipo4_stream2;
                 }
             };
             xhttp.open("GET", "datos.json", true);
             xhttp.send();
         }
 
-        function cargarStream(streamNumber,teamNumber,urlStream) {
-            idStream = "stream-container-team"+teamNumber+"-stream"+streamNumber;
+        function cargarStream(streamNumber, equipoNumber, urlStream) {
+            idStream = "stream-container-equipo" + equipoNumber + "-stream" + streamNumber;
             console.log(idStream);
             var container = document.getElementById(idStream);
             // create an iframe inside container
@@ -193,8 +273,8 @@
             container.append(stream);
         }
 
-        function switchTo(teamNumber) {
-            var streams = document.getElementsByClassName("streams-team");
+        function ocultarStreams(equipoNumber) {
+            var streams = document.getElementsByClassName("streams-equipo");
             for (var i = 0; i < streams.length; i++) {
                 streams[i].classList.add("ocultar");
             }
@@ -202,21 +282,65 @@
             for (var i = 0; i < streamContainers.length; i++) {
                 streamContainers[i].innerHTML = "";
             }
-            document.getElementById("streams-team" + teamNumber).classList.remove("ocultar");
-            
-            if (teamNumber == 1) {
-                cargarStream(1,teamNumber,team1_stream1);
-                cargarStream(2,teamNumber,team1_stream2);
-            } else if (teamNumber == 2) {
-                cargarStream(1,teamNumber,team2_stream1);
-                cargarStream(2,teamNumber,team2_stream2);
-            } else if (teamNumber == 3) {
-                cargarStream(1,teamNumber,team3_stream1);
-                cargarStream(2,teamNumber,team3_stream2);
-            } else if (teamNumber == 4) {
-                cargarStream(1,teamNumber,team4_stream1);
-                cargarStream(2,teamNumber,team4_stream2);
+            document.getElementById("streams-equipo" + equipoNumber).classList.remove("ocultar");
+        }
+
+        function elegirTabCorrecta(equipoNumber) {
+            var puntajes = document.getElementsByClassName("puntaje-equipo");
+            for (var i = 0; i < puntajes.length; i++) {
+                puntajes[i].classList.remove("seleccionado");
             }
+            document.getElementById("puntaje-equipo" + equipoNumber).classList.add("seleccionado");
+        }
+
+        function switchTo(equipoNumber) {
+            ocultarStreams(equipoNumber);
+            elegirTabCorrecta(equipoNumber);
+            if (equipoNumber == 1) {
+                cargarStream(1, equipoNumber, equipo1_stream1);
+                cargarStream(2, equipoNumber, equipo1_stream2);
+            } else if (equipoNumber == 2) {
+                cargarStream(1, equipoNumber, equipo2_stream1);
+                cargarStream(2, equipoNumber, equipo2_stream2);
+            } else if (equipoNumber == 3) {
+                cargarStream(1, equipoNumber, equipo3_stream1);
+                cargarStream(2, equipoNumber, equipo3_stream2);
+            } else if (equipoNumber == 4) {
+                cargarStream(1, equipoNumber, equipo4_stream1);
+                cargarStream(2, equipoNumber, equipo4_stream2);
+            }
+        }
+
+        function actualizarPuntajes() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+
+                    var puntajes = this.responseText;
+                    // separate the string into an array
+                    puntajes = puntajes.split(",");
+
+                    console.log(puntajes);
+                    document.getElementById("p_puntaje-equipo1").innerHTML = puntajes[0];
+                    document.getElementById("p_puntaje-equipo2").innerHTML = puntajes[1];
+                    document.getElementById("p_puntaje-equipo3").innerHTML = puntajes[2];
+                    document.getElementById("p_puntaje-equipo4").innerHTML = puntajes[3];
+                }
+            };
+            xhttp.open("GET", "https://raw.githubusercontent.com/esbendev/datos_2v2sday/main/puntajes.txt", true);
+            xhttp.send();
+        }
+
+        function inicializarPagina() {
+            cargarDatos();
+            actualizarPuntajes();
+            setInterval(function () {
+                actualizarPuntajes();
+            }, 300000);
+            // wait 1 second
+            setTimeout(function () {
+                switchTo(1);
+            }, 500);
         }
 
     </script>

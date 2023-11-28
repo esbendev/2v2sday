@@ -1,20 +1,20 @@
 [
     {
-        "team1_player1": "Karl",
-        "team1_player2": "Ludwig",
-        "team2_player1": "Etoiles",
-        "team2_player2": "Foolish",
-        "team3_player1": "Rae",
-        "team3_player2": "Tina",
-        "team4_player1": "Squeex",
-        "team4_player2": "Leslie",
-        "team1_stream1": "https://player.twitch.tv/?channel=karljacobs&parent=esbendev.com",
-        "team1_stream2": "https://www.youtube.com/embed/PGXrZdWTF58?si=FwgNV70u0aNdCyom&amp;controls=0",
-        "team2_stream1": "https://player.twitch.tv/?channel=etoiles&parent=esbendev.com",
-        "team2_stream2": "https://player.twitch.tv/?channel=foolish&parent=esbendev.com",
-        "team3_stream1": "https://www.youtube.com/embed/rS2MM9BiPhw?si=i3aY4Juh-Z7Z7dEB&amp;controls=0",
-        "team3_stream2": "https://player.twitch.tv/?channel=tinakitten&parent=esbendev.com",
-        "team4_stream1": "https://player.twitch.tv/?channel=squeex&parent=esbendev.com",
-        "team4_stream2": "https://www.youtube.com/embed/DfiiIH6hth4?si=dq1UYX2hRFJHDChB&amp;controls=0"
+        "equipo1_jugador1": "Karl",
+        "equipo1_jugador2": "Ludwig",
+        "equipo2_jugador1": "Etoiles",
+        "equipo2_jugador2": "Foolish",
+        "equipo3_jugador1": "Rae",
+        "equipo3_jugador2": "Tina",
+        "equipo4_jugador1": "Squeex",
+        "equipo4_jugador2": "Leslie",
+        "equipo1_stream1": "https://player.twitch.tv/?channel=karljacobs&parent=esbendev.com&parent=2v2s.day",
+        "equipo1_stream2": "https://www.youtube.com/embed/live_stream?channel=UCrPseYLGpNygVi34QpGNqpA&amp;autoplay=1",
+        "equipo2_stream1": "https://player.twitch.tv/?channel=etoiles&parent=esbendev.com&parent=2v2s.day",
+        "equipo2_stream2": "https://player.twitch.tv/?channel=foolish&parent=esbendev.com&parent=2v2s.day",
+        "equipo3_stream1": "https://www.youtube.com/embed/live_stream?channel=UCWxlUwW9BgGISaakjGM37aw&amp;autoplay=1",
+        "equipo3_stream2": "https://player.twitch.tv/?channel=tinakitten&parent=esbendev.com&parent=2v2s.day",
+        "equipo4_stream1": "https://player.twitch.tv/?channel=squeex&parent=esbendev.com&parent=2v2s.day",
+        "equipo4_stream2": "https://www.youtube.com/embed/live_stream?channel=UCujyjxsq5FZNVnQro51zKSQ&amp;autoplay=1"
     }
 ]
