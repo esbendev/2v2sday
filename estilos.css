@@ -86,6 +86,10 @@ div.puntaje-equipo:hover {
     background-color: lightgrey;
 }
 
+div.puntaje-equipo.seleccionado:hover {
+    background-color: #cc9aff;
+}
+
 .nombres-jugadores {
     width: 100%;
     display: flex;
