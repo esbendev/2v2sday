@@ -110,11 +110,31 @@ function actualizarPuntajes() {
     xhttp.send();
 }
 
+function actualizarJuego() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+
+            var juego = this.responseText.trim();
+            // separate the string into an array
+
+            console.log(juego);
+            document.getElementById("nombre-juego").innerHTML = juego;
+        }
+    };
+    xhttp.open("GET", "https://raw.githubusercontent.com/esbendev/datos_2v2sday/main/juego.txt", true);
+    xhttp.send();
+}
+
 function inicializarPagina() {
     cargarDatos();
     actualizarPuntajes();
+    actualizarJuego();
     setInterval(function () {
         actualizarPuntajes();
+    }, 300000);
+    setInterval(function () {
+        actualizarJuego();
     }, 300000);
     // wait 1 second
     setTimeout(function () {
