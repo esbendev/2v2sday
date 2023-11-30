@@ -34,6 +34,8 @@ function cargarDatos() {
     };
     xhttp.open("GET", "https://raw.githubusercontent.com/esbendev/datos_2v2sday/main/datos.json", true);
     xhttp.send();
+    var containerPrincipal = document.getElementById("container-principal");
+    containerPrincipal.classList.remove("cargando");
 }
 
 function cargarStream(streamNumber, equipoNumber, urlStream) {
