@@ -108,7 +108,7 @@ function actualizarPuntajes() {
             document.getElementById("p_puntaje-equipo4").innerHTML = puntajes[3];
         }
     };
-    xhttp.open("GET", "https://raw.githubusercontent.com/esbendev/datos_2v2sday/main/puntajes.txt", true);
+    xhttp.open("GET", "https://raw.githubusercontent.com/esbendev/datos_2v2sday/main/puntajes.txt?_=" + new Date().getTime(), true);
     xhttp.send();
 }
 
@@ -124,7 +124,7 @@ function actualizarJuego() {
             document.getElementById("nombre-juego").innerHTML = juego;
         }
     };
-    xhttp.open("GET", "https://raw.githubusercontent.com/esbendev/datos_2v2sday/main/juego.txt", true);
+    xhttp.open("GET", "https://raw.githubusercontent.com/esbendev/datos_2v2sday/main/juego.txt?_=" + new Date().getTime(), true);
     xhttp.send();
 }
 
@@ -138,7 +138,6 @@ function inicializarPagina() {
     setInterval(function () {
         actualizarJuego();
     }, 300000);
-    // wait 1 second
     setTimeout(function () {
         switchTo(1);
     }, 1000);
