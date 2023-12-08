@@ -32,7 +32,7 @@ function cargarDatos() {
             equipo4_stream2 = datos[0].equipo4_stream2;
         }
     };
-    xhttp.open("GET", "https://raw.githubusercontent.com/esbendev/datos_2v2sday/main/datos.json", true);
+    xhttp.open("GET", "https://raw.githubusercontent.com/esbendev/datos_2v2sday/main/datos.json?_=" + new Date().getTime(), true);
     xhttp.send();
     var containerPrincipal = document.getElementById("container-principal");
     containerPrincipal.classList.remove("cargando");
