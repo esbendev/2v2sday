@@ -70,15 +70,19 @@ header>h2 {
 }
 
 .primer-lugar {
-    background-color: #f59e09;
+    /* background-color: #f59e09; */
 }
 
 .segundo-lugar {
-    background-color: #aaaacd;
+    /* background-color: #aaaacd; */
 }
 
 .tercer-lugar {
-    background-color: #f96a24;
+    /* background-color: #f96a24; */
+}
+
+.cuarto-lugar{
+
 }
 
 .datos-equipo {

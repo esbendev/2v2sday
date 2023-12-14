@@ -27,9 +27,9 @@ function separarMiembros(miembros, jugadoresUnicos) {
     return miembrosSeparados;
 }
 
-function generarDatosEquipo(miembros, puntaje, jugadoresUnicos) {
+function generarDatosEquipo(miembros, puntaje, jugadoresUnicos, lugar) {
     var miembrosSeparados = separarMiembros(miembros, jugadoresUnicos);
-    var miembrosHTML = "<div class='datos-equipo'><div class='datos-equipo--miembros'>" + miembrosSeparados + "</div><div class='datos-equipo--puntos'>" + puntaje + "</div></div>";
+    var miembrosHTML = "<div class='datos-equipo "+lugar+"'><div class='datos-equipo--miembros'>" + miembrosSeparados + "</div><div class='datos-equipo--puntos'>" + puntaje + "</div></div>";
     return miembrosHTML;
 
 }
@@ -52,10 +52,10 @@ function populateTable(historial) {
             return b[1] - a[1];
         });
 
-        filaPrimerLugar = generarDatosEquipo(eval("fila.miembrosEquipo" + ordenDeEquipos[0][0].slice(-1)), eval("fila.equipo" + ordenDeEquipos[0][0].slice(-1)), jugadoresUnicos);
-        filaSegundoLugar = generarDatosEquipo(eval("fila.miembrosEquipo" + ordenDeEquipos[1][0].slice(-1)), eval("fila.equipo" + ordenDeEquipos[1][0].slice(-1)), jugadoresUnicos);
-        filaTercerLugar = generarDatosEquipo(eval("fila.miembrosEquipo" + ordenDeEquipos[2][0].slice(-1)), eval("fila.equipo" + ordenDeEquipos[2][0].slice(-1)), jugadoresUnicos);
-        filaCuartoLugar = generarDatosEquipo(eval("fila.miembrosEquipo" + ordenDeEquipos[3][0].slice(-1)), eval("fila.equipo" + ordenDeEquipos[3][0].slice(-1)), jugadoresUnicos);
+        filaPrimerLugar = generarDatosEquipo(eval("fila.miembrosEquipo" + ordenDeEquipos[0][0].slice(-1)), eval("fila.equipo" + ordenDeEquipos[0][0].slice(-1)), jugadoresUnicos,"primer-lugar");
+        filaSegundoLugar = generarDatosEquipo(eval("fila.miembrosEquipo" + ordenDeEquipos[1][0].slice(-1)), eval("fila.equipo" + ordenDeEquipos[1][0].slice(-1)), jugadoresUnicos,"segundo-lugar");
+        filaTercerLugar = generarDatosEquipo(eval("fila.miembrosEquipo" + ordenDeEquipos[2][0].slice(-1)), eval("fila.equipo" + ordenDeEquipos[2][0].slice(-1)), jugadoresUnicos,"tercer-lugar");
+        filaCuartoLugar = generarDatosEquipo(eval("fila.miembrosEquipo" + ordenDeEquipos[3][0].slice(-1)), eval("fila.equipo" + ordenDeEquipos[3][0].slice(-1)), jugadoresUnicos,"cuarto-lugar");
         filaHTML = "<div class='fila " + color + "'>" + filaFecha + filaPrimerLugar + filaSegundoLugar + filaTercerLugar + filaCuartoLugar + "</div>";
         tablaHTML += filaHTML;
     }
@@ -70,6 +70,22 @@ function populateTable(historial) {
     }
     filtros.innerHTML += "<div class='jugador-filtro jugador-filtro--reset' onclick='resetFiltros()'>Reset</div>"
     console.log(jugadoresUnicos);
+}
+
+function corregirColoresFondo(){
+    contador = 0;
+    var filas = document.getElementsByClassName("fila");
+    for (var i = 0; i < filas.length; i++) {
+        var fila = filas[i];
+        fila.classList.remove("oscuro");
+        fila.classList.remove("claro");
+        if (!fila.classList.contains("fila--escondida")) {
+            var color = contador % 2 == 0 ? "oscuro" : "claro";
+            fila.classList.add(color);
+            contador++;
+        }
+    }
+
 }
 
 function filtrarPlayers(jugador) {
@@ -102,6 +118,7 @@ function filtrarPlayers(jugador) {
             filtro.classList.remove("jugador-filtro--seleccionado");
         }
     }
+    corregirColoresFondo();
 }
 
 function resetFiltros() {
@@ -121,4 +138,5 @@ function resetFiltros() {
         var filtro = filtros[i];
         filtro.classList.remove("jugador-filtro--seleccionado");
     }
+    corregirColoresFondo();
 }
