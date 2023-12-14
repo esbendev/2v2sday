@@ -12,7 +12,7 @@ function loadTodo() {
     xhttp.send();
 }
 
-function separarMiembros(miembros,jugadoresUnicos) {
+function separarMiembros(miembros, jugadoresUnicos) {
     // console.log(miembros);
     // if miembros[0] is not in jugadoresUnicos, add it
     // if miembros[1] is not in jugadoresUnicos, add it
@@ -23,12 +23,12 @@ function separarMiembros(miembros,jugadoresUnicos) {
     if (!jugadoresUnicos.includes(miembros[1])) {
         jugadoresUnicos.push(miembros[1]);
     }
-    var miembrosSeparados = "<div class='miembro-equipo miembro-equipo--" + miembros[0].replace("/", "") + "' onclick=filtrarPlayers('"+miembros[0].replace("/", "")+"')>" + miembros[0] + "</div><div class='miembro-equipo miembro-equipo--" + miembros[1].replace("/", "") + "' onclick=filtrarPlayers('"+miembros[1].replace("/", "")+"')>" + miembros[1] + "</div>";
+    var miembrosSeparados = "<div class='miembro-equipo miembro-equipo--" + miembros[0].replace("/", "") + "' onclick=filtrarPlayers('" + miembros[0].replace("/", "") + "')>" + miembros[0] + "</div><div class='miembro-equipo miembro-equipo--" + miembros[1].replace("/", "") + "' onclick=filtrarPlayers('" + miembros[1].replace("/", "") + "')>" + miembros[1] + "</div>";
     return miembrosSeparados;
 }
 
 function generarDatosEquipo(miembros, puntaje, jugadoresUnicos) {
-    var miembrosSeparados = separarMiembros(miembros,jugadoresUnicos);
+    var miembrosSeparados = separarMiembros(miembros, jugadoresUnicos);
     var miembrosHTML = "<div class='datos-equipo'><div class='datos-equipo--miembros'>" + miembrosSeparados + "</div><div class='datos-equipo--puntos'>" + puntaje + "</div></div>";
     return miembrosHTML;
 
@@ -61,19 +61,21 @@ function populateTable(historial) {
     }
     tabla.innerHTML = tablaHTML;
 
+    filtros.innerHTML += "<p>Filter by streamer:</p>";
     // luego armo filtros
     for (var i = 0; i < jugadoresUnicos.length; i++) {
         var jugador = jugadoresUnicos[i];
-        var jugadorHTML = "<div class='jugador-filtro miembro-equipo--"+jugador.replace("/", "")+" jugador-filtro--"+jugador.replace("/", "")+"' id='jugador-filtro--" + jugador.replace("/", "") + "' onclick=filtrarPlayers('"+jugador.replace("/", "")+"')>" + jugador + "</div>";
+        var jugadorHTML = "<div class='jugador-filtro miembro-equipo--" + jugador.replace("/", "") + " jugador-filtro--" + jugador.replace("/", "") + "' id='jugador-filtro--" + jugador.replace("/", "") + "' onclick=filtrarPlayers('" + jugador.replace("/", "") + "')>" + jugador + "</div>";
         filtros.innerHTML += jugadorHTML;
     }
+    filtros.innerHTML += "<div class='jugador-filtro jugador-filtro--reset' onclick='resetFiltros()'>Reset</div>"
     console.log(jugadoresUnicos);
 }
 
 function filtrarPlayers(jugador) {
     var filas = document.getElementsByClassName("fila");
     var filtros = document.getElementsByClassName("jugador-filtro");
-    
+
     for (var i = 0; i < filas.length; i++) {
         var fila = filas[i];
         if (fila.innerHTML.includes(jugador)) {
@@ -99,7 +101,24 @@ function filtrarPlayers(jugador) {
         } else {
             filtro.classList.remove("jugador-filtro--seleccionado");
         }
-    } 
+    }
+}
 
+function resetFiltros() {
+    var filas = document.getElementsByClassName("fila");
+    var filtros = document.getElementsByClassName("jugador-filtro");
+    for (var i = 0; i < filas.length; i++) {
+        var fila = filas[i];
+        var miembros = fila.getElementsByClassName("miembro-equipo");
+        fila.classList.remove("fila--escondida");
+        for (var j = 0; j < miembros.length; j++) {
+            var miembro = miembros[j];
+            miembro.classList.remove("jugador-filtro--seleccionado");
+        }
+    }
 
+    for (var i = 0; i < filtros.length; i++) {
+        var filtro = filtros[i];
+        filtro.classList.remove("jugador-filtro--seleccionado");
+    }
 }

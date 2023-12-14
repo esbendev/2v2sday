@@ -65,8 +65,20 @@ header>h2 {
 
 .fila--fecha {}
 
-.fila--escondida{
+.fila--escondida {
     display: none;
+}
+
+.primer-lugar {
+    background-color: #f59e09;
+}
+
+.segundo-lugar {
+    background-color: #aaaacd;
+}
+
+.tercer-lugar {
+    background-color: #f96a24;
 }
 
 .datos-equipo {
@@ -124,14 +136,21 @@ footer>p>a {
     font-weight: bold;
 }
 
-.filtros-jugadores{
+.filtros-jugadores {
     display: flex;
     flex-direction: row;
     max-width: 100%;
     flex-wrap: wrap;
+    padding: 1rem;
 }
 
-.jugador-filtro{
+.filtros-jugadores>p {
+    flex-basis: 100%;
+    width: 0;
+    padding: 1rem;
+}
+
+.jugador-filtro {
     padding: .4rem;
     margin: .4rem;
     border-radius: 1rem;
@@ -139,8 +158,16 @@ footer>p>a {
     cursor: pointer;
 }
 
-.jugador-filtro--seleccionado{
+.jugador-filtro--seleccionado {
     font-weight: bold;
+}
+
+.jugador-filtro--reset {
+    padding: .4rem;
+    margin: .4rem;
+    cursor: pointer;
+    text-decoration: underline;
+    box-shadow: unset;
 }
 
 /* colores jugadores */
