@@ -1,0 +1,273 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    max-width: 100vw;
+    height: 100vh;
+    font-family: 'Roboto Serif', serif;
+}
+
+header {
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+header>h1 {
+    font-size: 2.2rem;
+}
+
+header>h1>a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+header>h2 {
+    font-size: 1.3rem;
+}
+
+.tablaHistorial {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.fila {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    padding: 1rem;
+    align-items: center;
+    justify-items: center;
+}
+
+.fila-header {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    padding: 1rem;
+    align-items: center;
+    justify-items: center;
+    font-weight: bold;
+    background-color: #cc9aff;
+}
+
+.fila--fecha {}
+
+.fila--escondida{
+    display: none;
+}
+
+.datos-equipo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.datos-equipo--puntos {
+    align-items: center;
+}
+
+.datos-equipo--miembros {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.miembro-equipo {
+    padding: .4rem;
+    margin: .4rem;
+    background-color: #cc9aff;
+    border-radius: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    cursor: pointer;
+}
+
+.oscuro {
+    background-color: #f0f0f0;
+}
+
+.claro {
+    background-color: #ffffff;
+}
+
+footer {
+    width: 100%;
+    background-color: #000000;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+footer>p {
+    color: white;
+}
+
+footer>p>a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.filtros-jugadores{
+    display: flex;
+    flex-direction: row;
+    max-width: 100%;
+    flex-wrap: wrap;
+}
+
+.jugador-filtro{
+    padding: .4rem;
+    margin: .4rem;
+    border-radius: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    cursor: pointer;
+}
+
+.jugador-filtro--seleccionado{
+    font-weight: bold;
+}
+
+/* colores jugadores */
+.miembro-equipo--wendy {
+    background-color: #FFB6C1;
+}
+
+.miembro-equipo--ludwig {
+    background-color: #FFDAB9;
+}
+
+.miembro-equipo--brodin {
+    background-color: #FFF0F5;
+}
+
+.miembro-equipo--foolish {
+    background-color: #F0FFF0;
+}
+
+.miembro-equipo--rae {
+    background-color: #F0FFFF;
+}
+
+.miembro-equipo--sykkuno {
+    background-color: #F5FFFA;
+}
+
+.miembro-equipo--leslie {
+    background-color: #F5F5DC;
+}
+
+.miembro-equipo--miyoung {
+    background-color: #FAFAD2;
+}
+
+.miembro-equipo--abe {
+    background-color: #FFEFD5;
+}
+
+.miembro-equipo--hasan {
+    background-color: #FFE4E1;
+}
+
+.miembro-equipo--janet {
+    background-color: #F0F8FF;
+}
+
+.miembro-equipo--blau {
+    background-color: #E6E6FA;
+}
+
+.miembro-equipo--ironmouse {
+    background-color: #FFF5EE;
+}
+
+.miembro-equipo--peter {
+    background-color: #F5F5F5;
+}
+
+.miembro-equipo--tina {
+    background-color: #FFF8DC;
+}
+
+.miembro-equipo--emiru {
+    background-color: #F8F8FF;
+}
+
+.miembro-equipo--squeex {
+    background-color: #FDF5E6;
+}
+
+.miembro-equipo--shoto {
+    background-color: #FFFAFA;
+}
+
+.miembro-equipo--masayoshi {
+    background-color: #FFFFF0;
+}
+
+.miembro-equipo--emily {
+    background-color: #FAEBD7;
+}
+
+.miembro-equipo--ellum {
+    background-color: #E0FFFF;
+}
+
+.miembro-equipo--boxbox {
+    background-color: #FAF0E6;
+}
+
+.miembro-equipo--celineryan {
+    background-color: #F5DEB3;
+}
+
+.miembro-equipo--tarik {
+    background-color: #FFE4C4;
+}
+
+.miembro-equipo--timmy {
+    background-color: #FFDEAD;
+}
+
+.miembro-equipo--connor {
+    background-color: #FFEBCD;
+}
+
+.miembro-equipo--tony {
+    background-color: #FFE4B5;
+}
+
+.miembro-equipo--kimi {
+    background-color: #FFDAB9;
+}
+
+.miembro-equipo--karl {
+    background-color: #EEE8AA;
+}
+
+.miembro-equipo--etoiles {
+    background-color: #F0E68C;
+}
+
+.miembro-equipo--celine {
+    background-color: #D8BFD8;
+}
+
+.miembro-equipo--sean {
+    background-color: #DDA0DD;
+}
